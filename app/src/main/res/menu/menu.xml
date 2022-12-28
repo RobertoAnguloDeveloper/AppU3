@@ -3,16 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menuItem1"
-        android:title="@string/menu1" />
+        android:title="@string/menuItem1" />
     <item
         android:id="@+id/menuItem2"
-        android:title="@string/menu2" />
+        android:title="@string/menuItem2" />
     <item
         android:id="@+id/menuItem3"
-        android:title="@string/menu3" />
+        android:title="@string/menuItem3" />
     <item
         android:id="@+id/menuItem4"
-        android:title="@string/menu4" />
+        android:title="@string/menuItem4" />
     <item
         android:id="@+id/menuItemSalir"
         android:title="@string/Salir" />
