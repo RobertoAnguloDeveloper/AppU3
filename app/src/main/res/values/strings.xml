@@ -1,8 +1,18 @@
 <resources>
-    <string name="app_name">RVLR AAU3</string>
+    <string name="app_name">Contacto</string>
+    <string name="appTitle">APP DE CONTACTO</string>
     <string name="menuItem1">Agregar Contacto</string>
     <string name="menuItem2">Ver Contacto</string>
     <string name="menuItem3">Actualizar Contacto</string>
     <string name="menuItem4">Eliminar Contacto</string>
     <string name="Salir">Salir</string>
+
+    <!-- activity_agregar -->
+    <string name="agregarTitle">AGREGAR CONTACTO</string>
+    <string name="numero_id">Número de indentificación</string>
+    <string name="nombres">Nombres</string>
+    <string name="apellidos">Apellidos</string>
+    <string name="tel_contacto">Teléfono de contacto</string>
+    <string name="email">Correo electrónico</string>
+    <string name="domicilio">Dirección de residencia</string>
 </resources>

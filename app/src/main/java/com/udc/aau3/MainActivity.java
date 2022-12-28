@@ -2,17 +2,19 @@ package com.udc.aau3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
+    Intent agregarActivityIntent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        agregarActivityIntent = new Intent(this, AgregarActivity.class);
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -23,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem menuItem){
         switch (menuItem.getItemId()){
             case R.id.menuItem1:
-                Toast.makeText(this, "MenuItem1", Toast.LENGTH_SHORT).show();
+                startActivity(agregarActivityIntent);
                 break;
             case R.id.menuItem2:
                 Toast.makeText(this, "MenuItem2", Toast.LENGTH_SHORT).show();
