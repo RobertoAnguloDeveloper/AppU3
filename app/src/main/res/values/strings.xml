@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">RVLR AAU3</string>
+    <string name="menu1">Agregar Contacto</string>
+    <string name="menu2">Ver Contacto</string>
+    <string name="menu3">Actualizar Contacto</string>
+    <string name="menu4">Eliminar Contacto</string>
+    <string name="Salir">Salir</string>
+</resources>
