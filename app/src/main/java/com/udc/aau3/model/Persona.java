@@ -1,38 +1,49 @@
 package com.udc.aau3.model;
 
 public class Persona {
-    Integer id;
-    String nombres;
-    String apellidos;
-    String email;
-    String domicilio;
+    private Integer id;
+    private Integer imagen;
+    private String nombres;
+    private String apellidos;
+    private String telefono;
+    private String email;
+    private String domicilio;
 
-    public Persona(Integer id, String nombres, String apellidos, String email, String domicilio) {
+    public Persona(Integer id, String nombres, String apellidos, String telefono, String email, String domicilio) {
         this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
+        this.telefono = telefono;
         this.email = email;
         this.domicilio = domicilio;
     }
 
-    public Persona(String nombres, String apellidos, String email, String domicilio) {
-        this.id = id;
+    public Persona(String nombres, String apellidos, String telefono, String email, String domicilio) {
         this.nombres = nombres;
         this.apellidos = apellidos;
+        this.telefono = telefono;
         this.email = email;
         this.domicilio = domicilio;
     }
 
     public Integer getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Integer id) {
         this.id = id;
     }
 
+    public Integer getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(Integer imagen) {
+        this.imagen = imagen;
+    }
+
     public String getNombres() {
-        return nombres;
+        return this.nombres;
     }
 
     public void setNombres(String nombres) {
@@ -40,15 +51,23 @@ public class Persona {
     }
 
     public String getApellidos() {
-        return apellidos;
+        return this.apellidos;
     }
 
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
 
+    public String getTelefono() {
+        return this.telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public void setEmail(String email) {
@@ -56,7 +75,7 @@ public class Persona {
     }
 
     public String getDomicilio() {
-        return domicilio;
+        return this.domicilio;
     }
 
     public void setDomicilio(String domicilio) {

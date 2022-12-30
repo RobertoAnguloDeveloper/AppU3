@@ -3,7 +3,6 @@ package com.udc.aau3;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,8 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AgregarActivity extends AppCompatActivity {
-    private TextInputEditText id, nombres, apellidos, tel_contacto, email, domicilio;
+    private TextInputEditText id, nombres, apellidos, telefono, email, domicilio;
     private List<TextInputEditText> inputs;
+    private Integer idNum;
     Button btnAgregar;
 
     @Override
@@ -30,15 +30,21 @@ public class AgregarActivity extends AppCompatActivity {
 
         id = findViewById(R.id.id);
 
-        //String idNum = (MainActivity.contactos.size()+1)+"";
-        String query = "SELECT seq FROM sqlite_sequence WHERE name='"+MainActivity.tableName+"';";
-        Cursor cursor = MainActivity.sqLiteRead.rawQuery(query, null);
-        cursor.moveToFirst();
+        idNum = 0;
 
-        String resultQuery = (cursor.getInt(0)+1)+"";
-
-        id.setText(resultQuery);
-        //id.setText(idNum);
+        if(MainActivity.contactos.size() > 0){
+            idNum = MainActivity.contactos.get(MainActivity.contactos.size()-1).getId()+1;
+        }else{
+            idNum = 1;
+        }
+//        String query = "SELECT seq FROM sqlite_sequence WHERE name='"+MainActivity.tableName+"';";
+//        Cursor cursor = MainActivity.sqLiteRead.rawQuery(query, null);
+//        cursor.moveToFirst();
+//
+//        String resultQuery = (cursor.getInt(0)+1)+"";
+//
+//        id.setText(resultQuery);
+        id.setText(idNum.toString());
         id.setEnabled(false);
 
         nombres = findViewById(R.id.nombres);
@@ -49,9 +55,9 @@ public class AgregarActivity extends AppCompatActivity {
         apellidos.setSingleLine(true);
         inputs.add(apellidos);
 
-        tel_contacto = findViewById(R.id.tel_contacto);
-        tel_contacto.setSingleLine(true);
-        inputs.add(tel_contacto);
+        telefono = findViewById(R.id.telefono);
+        telefono.setSingleLine(true);
+        inputs.add(telefono);
 
         email = findViewById(R.id.email);
         email.setSingleLine(true);
@@ -67,23 +73,38 @@ public class AgregarActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Persona persona = new Persona(Integer.valueOf(id.getText().toString()), nombres.getText().toString(),
-                        apellidos.getText().toString(),
+                        apellidos.getText().toString(), telefono.getText().toString(),
                         email.getText().toString(), domicilio.getText().toString());
 
+                persona.setImagen(R.drawable.contact);
+
                 MainActivity.contactos.add(persona);
+
+                for (Persona per :
+                        MainActivity.contactos) {
+                    System.out.println(per.getId()
+                            + "\n"+per.getNombres()
+                            + "\n"+per.getApellidos()
+                            + "\n"+per.getTelefono()
+                            + "\n"+per.getEmail()
+                            + "\n"+per.getDomicilio());
+                }
 
                 ContentValues contentValues = new ContentValues();
 
                 contentValues.put("nombres",persona.getNombres());
                 contentValues.put("apellidos",persona.getApellidos());
+                contentValues.put("telefono", persona.getTelefono());
                 contentValues.put("email",persona.getEmail());
                 contentValues.put("domicilio",persona.getDomicilio());
                 MainActivity.sqLiteWrite.insert(MainActivity.tableName, null, contentValues);
 
                 Validador.limpiarCampos(inputs);
+                idNum++;
                 id.setEnabled(true);
-                id.setText(Integer.valueOf(id.getText().toString())+1+"");
+                id.setText(idNum.toString());
                 id.setEnabled(false);
+
                 Toast.makeText(AgregarActivity.this, "CONTACTO GUARDADO", Toast.LENGTH_SHORT).show();
             }
         });

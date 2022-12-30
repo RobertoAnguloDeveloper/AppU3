@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    Intent agregarActivityIntent;
+    Intent agregarActivityIntent, mostrarActivityIntent;
     public static List<Persona> contactos;
     public static DbHelper dbHelper;
     public static SQLiteDatabase sqLiteWrite, sqLiteRead;
@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         agregarActivityIntent = new Intent(this, AgregarActivity.class);
+        mostrarActivityIntent = new Intent(this, MostrarListaActivity.class);
         contactos = new ArrayList<>();
 
         dbName = "agenda";
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "nombres VARCHAR(255), " +
                 "apellidos VARCHAR(255), " +
+                "telefono VARCHAR(50), " +
                 "email VARCHAR(255), " +
                 "domicilio VARCHAR(255))";
 
@@ -54,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(agregarActivityIntent);
                 break;
             case R.id.menuItem2:
-                Toast.makeText(this, "MenuItem2", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "MenuItem2", Toast.LENGTH_SHORT).show();
+                startActivity(mostrarActivityIntent);
                 break;
             case R.id.menuItem3:
                 Toast.makeText(this, "MenuItem3", Toast.LENGTH_SHORT).show();

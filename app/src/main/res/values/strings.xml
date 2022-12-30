@@ -5,7 +5,7 @@
     <string name="udc_logo">UDC Logo</string>
     <string name="appTitle">APP DE CONTACTO</string>
     <string name="menuItem1">Agregar Contacto</string>
-    <string name="menuItem2">Ver Contacto</string>
+    <string name="menuItem2">Lista de Contactos</string>
     <string name="menuItem3">Actualizar Contacto</string>
     <string name="menuItem4">Eliminar Contacto</string>
     <string name="Salir">Salir</string>
