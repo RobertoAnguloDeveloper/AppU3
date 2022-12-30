@@ -15,4 +15,10 @@
         <!-- Customize your theme here. -->
         <item name="android:colorAccent">?attr/colorAccent</item>
     </style>
+
+    <style name="splash_theme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+
 </resources>
