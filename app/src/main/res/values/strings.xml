@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Contacto</string>
+    <string name="cipa_name">RVLR SOFT</string>
+    <string name="cipa_info">ROBERTO ANGULO VINCENT ROLONG LUIFER VILLA RUBEN HERNANDEZ MURIEL DIAZ</string>
+    <string name="udc_logo">UDC Logo</string>
     <string name="appTitle">APP DE CONTACTO</string>
     <string name="menuItem1">Agregar Contacto</string>
     <string name="menuItem2">Ver Contacto</string>
