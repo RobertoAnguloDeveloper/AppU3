@@ -2,14 +2,14 @@ package com.udc.aau3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ContentValues;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.udc.aau3.controller.Validador;
+import com.udc.aau3.controller.ManejadorInputs;
 import com.udc.aau3.model.Persona;
 
 import java.util.ArrayList;
@@ -49,6 +49,9 @@ public class AgregarActivity extends AppCompatActivity {
 
         nombres = findViewById(R.id.nombres);
         nombres.setSingleLine(true);
+        nombres.requestFocus();
+        InputMethodManager imm = (InputMethodManager) getSystemService(this.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(nombres, InputMethodManager.SHOW_IMPLICIT);
         inputs.add(nombres);
 
         apellidos = findViewById(R.id.apellidos);
@@ -80,31 +83,31 @@ public class AgregarActivity extends AppCompatActivity {
 
                 MainActivity.contactos.add(persona);
 
-                for (Persona per :
-                        MainActivity.contactos) {
-                    System.out.println(per.getId()
-                            + "\n"+per.getNombres()
-                            + "\n"+per.getApellidos()
-                            + "\n"+per.getTelefono()
-                            + "\n"+per.getEmail()
-                            + "\n"+per.getDomicilio());
-                }
+//                for (Persona per :
+//                        MainActivity.contactos) {
+//                    System.out.println(per.getId()
+//                            + "\n"+per.getNombres()
+//                            + "\n"+per.getApellidos()
+//                            + "\n"+per.getTelefono()
+//                            + "\n"+per.getEmail()
+//                            + "\n"+per.getDomicilio());
+//                }
+//
+//                ContentValues contentValues = new ContentValues();
+//
+//                contentValues.put("nombres",persona.getNombres());
+//                contentValues.put("apellidos",persona.getApellidos());
+//                contentValues.put("telefono", persona.getTelefono());
+//                contentValues.put("email",persona.getEmail());
+//                contentValues.put("domicilio",persona.getDomicilio());
+//                MainActivity.sqLiteWrite.insert(MainActivity.tableName, null, contentValues);
 
-                ContentValues contentValues = new ContentValues();
-
-                contentValues.put("nombres",persona.getNombres());
-                contentValues.put("apellidos",persona.getApellidos());
-                contentValues.put("telefono", persona.getTelefono());
-                contentValues.put("email",persona.getEmail());
-                contentValues.put("domicilio",persona.getDomicilio());
-                MainActivity.sqLiteWrite.insert(MainActivity.tableName, null, contentValues);
-
-                Validador.limpiarCampos(inputs);
+                ManejadorInputs.limpiarCampos(inputs);
                 idNum++;
                 id.setEnabled(true);
                 id.setText(idNum.toString());
                 id.setEnabled(false);
-
+                nombres.requestFocus();
                 Toast.makeText(AgregarActivity.this, "CONTACTO GUARDADO", Toast.LENGTH_SHORT).show();
             }
         });

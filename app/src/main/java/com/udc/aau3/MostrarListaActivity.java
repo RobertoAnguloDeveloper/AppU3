@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.udc.aau3.controller.CustomAdapter;
@@ -17,6 +18,7 @@ public class MostrarListaActivity extends AppCompatActivity {
     private ListView listView;
     private CustomAdapter adapter;
     private Intent llamarActivityIntent;
+    public static Persona personaClicked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class MostrarListaActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                personaClicked = MainActivity.contactos.get(i);
                 startActivity(llamarActivityIntent);
             }
         });

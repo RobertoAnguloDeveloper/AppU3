@@ -9,6 +9,10 @@ public class Persona {
     private String email;
     private String domicilio;
 
+    public Persona(){
+
+    }
+
     public Persona(Integer id, String nombres, String apellidos, String telefono, String email, String domicilio) {
         this.id = id;
         this.nombres = nombres;
