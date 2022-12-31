@@ -99,16 +99,20 @@ public class ActualizarActivity extends AppCompatActivity {
         switch (menuItem.getItemId()){
             case R.id.menuItem1:
                 startActivity(agregarActivityIntent);
+                finish();
                 break;
             case R.id.menuItem2:
                 //Toast.makeText(this, "MenuItem2", Toast.LENGTH_SHORT).show();
                 startActivity(mostrarActivityIntent);
+                finish();
                 break;
             case R.id.menuItem3:
                 startActivity(mostrarActualizarActivityIntent);
+                finish();
                 break;
             case R.id.menuItem4:
                 startActivity(mostrarEliminarActivityIntent);
+                finish();
                 break;
             case R.id.menuItemSalir:
                 finishAffinity();
