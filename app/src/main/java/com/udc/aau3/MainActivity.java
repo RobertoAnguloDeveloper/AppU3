@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.udc.aau3.model.DbHelper;
@@ -16,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    Intent agregarActivityIntent, mostrarActivityIntent;
+    Intent agregarActivityIntent, mostrarActivityIntent, mostrarActualizarActivityIntent;
     public static List<Persona> contactos;
     public static DbHelper dbHelper;
     public static SQLiteDatabase sqLiteWrite, sqLiteRead;
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         agregarActivityIntent = new Intent(this, AgregarActivity.class);
         mostrarActivityIntent = new Intent(this, MostrarListaActivity.class);
+        mostrarActualizarActivityIntent = new Intent(this, MostrarActualizarActivity.class);
         contactos = new ArrayList<>();
 
         dbName = "agenda";
@@ -60,13 +63,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(mostrarActivityIntent);
                 break;
             case R.id.menuItem3:
-                Toast.makeText(this, "MenuItem3", Toast.LENGTH_SHORT).show();
+                startActivity(mostrarActualizarActivityIntent);
                 break;
             case R.id.menuItem4:
                 Toast.makeText(this, "MenuItem4", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.menuItemSalir:
                 finish();
+                System.exit(0);
                 break;
         }
 

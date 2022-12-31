@@ -11,12 +11,6 @@ public class ManejadorInputs {
         }
     }
 
-    public static void editable(List<TextInputEditText> inputs){
-        for (int i = 0; i < inputs.size(); i++) {
-            inputs.get(i).setEnabled(false);
-        }
-    }
-
     public static void disable(List<TextInputEditText> inputs){
         for (int i = 0; i < inputs.size(); i++) {
             inputs.get(i).setEnabled(false);

@@ -15,8 +15,8 @@ import com.udc.aau3.model.Persona;
 import java.util.List;
 
 public class MostrarListaActivity extends AppCompatActivity {
-    private ListView listView;
-    private CustomAdapter adapter;
+    public static ListView listView;
+    public static CustomAdapter adapter;
     private Intent llamarActivityIntent;
     public static Persona personaClicked;
 
