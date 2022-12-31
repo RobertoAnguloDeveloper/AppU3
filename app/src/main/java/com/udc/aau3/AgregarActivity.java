@@ -2,7 +2,10 @@ package com.udc.aau3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -16,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AgregarActivity extends AppCompatActivity {
+    Intent agregarActivityIntent, mostrarActivityIntent, mostrarActualizarActivityIntent
+            , mostrarEliminarActivityIntent;
     private TextInputEditText id, nombres, apellidos, telefono, email, domicilio;
     private List<TextInputEditText> inputs;
     private Integer idNum;
@@ -26,6 +31,11 @@ public class AgregarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar);
         getSupportActionBar().setTitle("AGREGAR CONTACTO");
+
+        agregarActivityIntent = new Intent(this, AgregarActivity.class);
+        mostrarActivityIntent = new Intent(this, MostrarListaActivity.class);
+        mostrarActualizarActivityIntent = new Intent(this, MostrarActualizarActivity.class);
+        mostrarEliminarActivityIntent = new Intent(this, MostrarEliminarActivity.class);
 
         inputs = new ArrayList<>();
 
@@ -112,5 +122,33 @@ public class AgregarActivity extends AppCompatActivity {
                 Toast.makeText(AgregarActivity.this, "CONTACTO GUARDADO", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem menuItem){
+        switch (menuItem.getItemId()){
+            case R.id.menuItem1:
+                startActivity(agregarActivityIntent);
+                break;
+            case R.id.menuItem2:
+                //Toast.makeText(this, "MenuItem2", Toast.LENGTH_SHORT).show();
+                startActivity(mostrarActivityIntent);
+                break;
+            case R.id.menuItem3:
+                startActivity(mostrarActualizarActivityIntent);
+                break;
+            case R.id.menuItem4:
+                startActivity(mostrarEliminarActivityIntent);
+                break;
+            case R.id.menuItemSalir:
+                finishAffinity();
+                break;
+        }
+
+        return super.onOptionsItemSelected(menuItem);
     }
 }

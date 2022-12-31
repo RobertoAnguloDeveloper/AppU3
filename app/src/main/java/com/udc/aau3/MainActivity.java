@@ -1,9 +1,14 @@
 package com.udc.aau3;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -72,8 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(mostrarEliminarActivityIntent);
                 break;
             case R.id.menuItemSalir:
-                finish();
-                System.exit(0);
+                finishAffinity();
                 break;
         }
 

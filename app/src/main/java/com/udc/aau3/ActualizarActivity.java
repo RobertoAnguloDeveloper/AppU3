@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -16,7 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ActualizarActivity extends AppCompatActivity {
-    Intent mostrarActualizarActivityIntent;
+    Intent agregarActivityIntent, mostrarActivityIntent, mostrarActualizarActivityIntent
+            , mostrarEliminarActivityIntent;
     private TextInputEditText idContact, nombresContact, apellidosContact, telefonoContact, emailContact, domicilioContact;
     private List<TextInputEditText> textInputEditTextList;
     private Button btnActualizar;
@@ -27,9 +30,12 @@ public class ActualizarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_actualizar);
         getSupportActionBar().setTitle("ACTUALIZAR CONTACTO");
 
-        textInputEditTextList = new ArrayList<>();
-
+        agregarActivityIntent = new Intent(this, AgregarActivity.class);
+        mostrarActivityIntent = new Intent(this, MostrarListaActivity.class);
         mostrarActualizarActivityIntent = new Intent(this, MostrarActualizarActivity.class);
+        mostrarEliminarActivityIntent = new Intent(this, MostrarEliminarActivity.class);
+
+        textInputEditTextList = new ArrayList<>();
 
         idContact = findViewById(R.id.idContact);
         textInputEditTextList.add(idContact);
@@ -82,5 +88,33 @@ public class ActualizarActivity extends AppCompatActivity {
                 startActivity(mostrarActualizarActivityIntent);
             }
         });
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem menuItem){
+        switch (menuItem.getItemId()){
+            case R.id.menuItem1:
+                startActivity(agregarActivityIntent);
+                break;
+            case R.id.menuItem2:
+                //Toast.makeText(this, "MenuItem2", Toast.LENGTH_SHORT).show();
+                startActivity(mostrarActivityIntent);
+                break;
+            case R.id.menuItem3:
+                startActivity(mostrarActualizarActivityIntent);
+                break;
+            case R.id.menuItem4:
+                startActivity(mostrarEliminarActivityIntent);
+                break;
+            case R.id.menuItemSalir:
+                finishAffinity();
+                break;
+        }
+
+        return super.onOptionsItemSelected(menuItem);
     }
 }
