@@ -25,6 +25,7 @@ public class AgregarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar);
+        getSupportActionBar().setTitle("AGREGAR CONTACTO");
 
         inputs = new ArrayList<>();
 

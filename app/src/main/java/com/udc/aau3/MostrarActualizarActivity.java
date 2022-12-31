@@ -21,6 +21,7 @@ public class MostrarActualizarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mostrar_actualizar);
+        getSupportActionBar().setTitle("ACTUALIZAR CONTACTO");
 
         listViewActualizar = findViewById(R.id.listaContactosActualizar);
         actualizarActivityIntent = new Intent(this, ActualizarActivity.class);

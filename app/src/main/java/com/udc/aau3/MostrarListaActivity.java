@@ -24,6 +24,7 @@ public class MostrarListaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mostrar_lista);
+        getSupportActionBar().setTitle("LISTA DE CONTACTOS");
 
         listView = findViewById(R.id.listaContactos);
         llamarActivityIntent = new Intent(this, LlamarActivity.class);

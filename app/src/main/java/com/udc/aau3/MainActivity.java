@@ -18,7 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    Intent agregarActivityIntent, mostrarActivityIntent, mostrarActualizarActivityIntent;
+    Intent agregarActivityIntent, mostrarActivityIntent, mostrarActualizarActivityIntent
+            , mostrarEliminarActivityIntent;
     public static List<Persona> contactos;
     public static DbHelper dbHelper;
     public static SQLiteDatabase sqLiteWrite, sqLiteRead;
@@ -28,9 +29,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         agregarActivityIntent = new Intent(this, AgregarActivity.class);
         mostrarActivityIntent = new Intent(this, MostrarListaActivity.class);
         mostrarActualizarActivityIntent = new Intent(this, MostrarActualizarActivity.class);
+        mostrarEliminarActivityIntent = new Intent(this, MostrarEliminarActivity.class);
         contactos = new ArrayList<>();
 
         dbName = "agenda";
@@ -66,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(mostrarActualizarActivityIntent);
                 break;
             case R.id.menuItem4:
-                Toast.makeText(this, "MenuItem4", Toast.LENGTH_SHORT).show();
+                startActivity(mostrarEliminarActivityIntent);
                 break;
             case R.id.menuItemSalir:
                 finish();

@@ -3,7 +3,6 @@ package com.udc.aau3;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,38 +14,42 @@ import com.udc.aau3.model.Persona;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActualizarActivity extends AppCompatActivity {
-    Intent mostrarActualizarActivityIntent;
+public class EliminarActivity extends AppCompatActivity {
+    Intent mostrarEliminarActivityIntent;
     private TextInputEditText idContact, nombresContact, apellidosContact, telefonoContact, emailContact, domicilioContact;
     private List<TextInputEditText> textInputEditTextList;
-    private Button btnActualizar;
+    private Button btnEliminar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_actualizar);
-        getSupportActionBar().setTitle("ACTUALIZAR CONTACTO");
+        setContentView(R.layout.activity_eliminar);
+
+        mostrarEliminarActivityIntent = new Intent(this, MostrarEliminarActivity.class);
 
         textInputEditTextList = new ArrayList<>();
-
-        mostrarActualizarActivityIntent = new Intent(this, MostrarActualizarActivity.class);
 
         idContact = findViewById(R.id.idContact);
         textInputEditTextList.add(idContact);
 
-        nombresContact = findViewById(R.id.nombresContactA);
+        nombresContact = findViewById(R.id.nombresContactE);
+        textInputEditTextList.add(nombresContact);
 
-        apellidosContact = findViewById(R.id.apellidosContactA);
+        apellidosContact = findViewById(R.id.apellidosContactE);
+        textInputEditTextList.add(apellidosContact);
 
-        telefonoContact = findViewById(R.id.telefonoContactA);
+        telefonoContact = findViewById(R.id.telefonoContactE);
+        textInputEditTextList.add(telefonoContact);
 
-        emailContact = findViewById(R.id.emailContactA);
+        emailContact = findViewById(R.id.emailContactE);
+        textInputEditTextList.add(emailContact);
 
-        domicilioContact =findViewById(R.id.domicilioContactA);
+        domicilioContact =findViewById(R.id.domicilioContactE);
+        textInputEditTextList.add(domicilioContact);
 
-        Persona contacto = MostrarActualizarActivity.personaActualizar;
+        Persona contacto = MostrarEliminarActivity.personaEliminar;
 
-        btnActualizar = findViewById(R.id.btnActualizar);
+        btnEliminar = findViewById(R.id.btnEliminar);
 
         idContact.setText(contacto.getId().toString());
         nombresContact.setText(contacto.getNombres());
@@ -57,13 +60,9 @@ public class ActualizarActivity extends AppCompatActivity {
 
         ManejadorInputs.disable(textInputEditTextList);
 
-        btnActualizar.setOnClickListener(new View.OnClickListener() {
+        btnEliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Persona contactoEditado = new Persona(Integer.valueOf(idContact.getText().toString())
-                        , nombresContact.getText().toString(), apellidosContact.getText().toString()
-                        , telefonoContact.getText().toString(), emailContact.getText().toString()
-                        ,domicilioContact.getText().toString());
 
                 int index = 0;
                 int idBuscar = Integer.valueOf(idContact.getText().toString());
@@ -74,12 +73,10 @@ public class ActualizarActivity extends AppCompatActivity {
                     }
                 }
 
-                contactoEditado.setImagen(MainActivity.contactos.get(index).getImagen());
-
-                MainActivity.contactos.set(index, contactoEditado);
-                MostrarActualizarActivity.adapterActualizar.notifyDataSetChanged();
+                MainActivity.contactos.remove(index);
+                MostrarEliminarActivity.adapterEliminar.notifyDataSetChanged();
                 finish();
-                startActivity(mostrarActualizarActivityIntent);
+                startActivity(mostrarEliminarActivityIntent);
             }
         });
     }
